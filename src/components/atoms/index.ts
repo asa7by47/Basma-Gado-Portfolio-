@@ -6,3 +6,5 @@ export { VideoEmbed } from './VideoEmbed'
 export { Image } from './Image'
 export { Link } from './Link'
 export { Divider } from './Divider'
+export { SilverFrame } from './SilverFrame/SilverFrame'
+

@@ -23,14 +23,24 @@ export function Navbar() {
       )}
     >
       <div className="max-w-content mx-auto px-6 flex items-center justify-between relative z-50">
-        {/* Wordmark */}
+        {/* Looping GIF Logo & Wordmark */}
         <RouterLink
           to="/"
-          className="font-display text-subheading text-text hover:text-accent transition-colors duration-[var(--dur-fast)]"
+          className="flex items-center gap-3 group transition-transform duration-[var(--dur-fast)] hover:scale-[1.02]"
           onClick={closeMobile}
         >
-          Basma Gado
+          <div className="relative overflow-hidden rounded-md border border-accent/30 p-0.5 bg-surface/80 group-hover:border-accent transition-colors duration-300">
+            <img
+              src="/images/wrapper.gif"
+              alt="Basma Gado Logo"
+              className="h-9 w-auto object-contain rounded"
+            />
+          </div>
+          <span className="font-display text-subheading text-text group-hover:text-accent transition-colors duration-[var(--dur-fast)] font-semibold tracking-wide">
+            Basma Gado
+          </span>
         </RouterLink>
+
 
         {/* Desktop nav */}
         {isDesktop ? (

@@ -48,6 +48,14 @@ export const router = createBrowserRouter([
         element: <CVPage />,
       },
       {
+        path: 'videos',
+        element: <Navigate to="/work/videos" replace />,
+      },
+      {
+        path: 'images',
+        element: <Navigate to="/work/images" replace />,
+      },
+      {
         path: 'work',
         element: <WorkTemplate />,
         children: [
@@ -75,6 +83,7 @@ export const router = createBrowserRouter([
       },
     ],
   },
+
   {
     path: '/reel',
     element: <FullscreenTemplate />,

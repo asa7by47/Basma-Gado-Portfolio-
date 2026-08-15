@@ -1,17 +1,21 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { videos } from '@/data/videos'
+import type { VideoItem } from '@/types'
 import { VideoCard } from '@/components/molecules/VideoCard'
+import { InteractiveVideoModal } from '@/components/organisms/InteractiveVideoModal'
 import { useReducedMotion } from '@/hooks'
 
 export function VideoGrid() {
   const reducedMotion = useReducedMotion()
+  const [selectedVideo, setSelectedVideo] = useState<VideoItem | null>(null)
 
   const container = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: reducedMotion ? 0 : 0.1,
+        staggerChildren: reducedMotion ? 0 : 0.08,
       },
     },
   }
@@ -29,18 +33,33 @@ export function VideoGrid() {
   }
 
   return (
-    <motion.section
-      variants={container}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '-100px' }}
-      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
-    >
-      {videos.map((video, index) => (
-        <motion.div key={video.id} variants={item}>
-          <VideoCard video={video} priority={index < 2} />
-        </motion.div>
-      ))}
-    </motion.section>
+    <>
+      <motion.section
+        variants={container}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-100px' }}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+      >
+        {videos.map((video, index) => (
+          <motion.div key={video.id} variants={item}>
+            <VideoCard
+              video={video}
+              priority={index < 2}
+              onSelect={(v) => setSelectedVideo(v)}
+            />
+          </motion.div>
+        ))}
+      </motion.section>
+
+      {/* Interactive Video Modal Theater */}
+      <InteractiveVideoModal
+        video={selectedVideo}
+        allVideos={videos}
+        onClose={() => setSelectedVideo(null)}
+        onSelectVideo={(v) => setSelectedVideo(v)}
+      />
+    </>
   )
 }
+
