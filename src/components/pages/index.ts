@@ -1,0 +1,8 @@
+export { HomePage } from './HomePage'
+export { ReelPage } from './ReelPage'
+export { VideosPage } from './VideosPage'
+export { ImagesPage } from './ImagesPage'
+export { InteractivePage } from './InteractivePage'
+export { AboutPage } from './AboutPage'
+export { ContactPage } from './ContactPage'
+export { CVPage } from './CVPage'
