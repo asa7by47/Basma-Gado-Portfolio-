@@ -31,15 +31,19 @@ export function Navbar() {
         >
           <div className="relative overflow-hidden rounded-md border border-accent/30 p-0.5 bg-surface/80 group-hover:border-accent transition-colors duration-300">
             <img
-              src="/images/wrapper.gif"
+              src="/images/basma-logo.gif"
+              onError={(e) => {
+                ;(e.target as HTMLImageElement).src = '/images/wrapper.gif'
+              }}
               alt="Basma Gado Logo"
-              className="h-9 w-auto object-contain rounded"
+              className="h-10 w-auto object-contain rounded"
             />
           </div>
           <span className="font-display text-subheading text-text group-hover:text-accent transition-colors duration-[var(--dur-fast)] font-semibold tracking-wide">
             Basma Gado
           </span>
         </RouterLink>
+
 
 
         {/* Desktop nav */}
